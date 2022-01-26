@@ -30,34 +30,33 @@
 Console.Write("Введите колличество элементов массива: ");
 int n = checkN(Console.ReadLine());
 
-Console.WriteLine("Введите элементы массива: ");
 string[] array = new string[n];
+string temp = string.Empty;
+int count = 0;
+int rangeStart = 0;
+int rangeEnd = 4;
+
+Console.WriteLine("Введите элементы массива: ");
+
 for (int i = 0; i < n; i++)
 {
     Console.Write(i + 1 + ". ");
-    array[i] = Console.ReadLine();
-}
-
-string[] newArray = new string[n];
-int j = 0;
-
-for (var i = 0; i < n; i++)
-{
-    if (array[i].Length < 4 && array[i].Length > 0)
+    temp = Console.ReadLine();
+    if (temp.Length > rangeStart && temp.Length < rangeEnd)
     {
-        newArray[j] = array[i];
-        j++;
+        array[count] = temp;
+        count++;
     }
 }
 
-Array.Resize(ref newArray, j);
+Array.Resize(ref array, count);
 
-if (newArray.Length > 0)
+if (array.Length > 0)
 {
     Console.WriteLine("Новый массив: ");
-    for (var i = 0; i < newArray.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.WriteLine(i + 1 + ". " + newArray[i]);
+        Console.WriteLine(i + 1 + ". " + array[i]);
     }
 }
 else
